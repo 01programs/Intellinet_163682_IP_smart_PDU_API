@@ -1,9 +1,7 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*- 
 import requests
 import xml.etree.ElementTree as et
-
-
-HOST = "10.0.255.80/"
-
 
 
 class IPU():
@@ -38,7 +36,7 @@ class IPU():
 	def _get_request(self, page):
 		return requests.get(
 			self.schema + self.host + page,
-			auth=self._auth(*self.credentials)
+			auth=self._auth(self.credentials)
 		)
 
 	def _post_request(self, page):
@@ -53,14 +51,13 @@ class IPU():
 	def _parse_response(self, resp):
 		return et.fromstring(resp)
 
-	def _auth(self, username, password):
-		return requests.auth.HTTPBasicAuth("admin", "admin")
+	def _auth(self, creds):
+		return requests.auth.HTTPBasicAuth(*creds)
 
 	def _extract_value(self, xml_root, xml_element_name):
 		return xml_root.find(xml_element_name).text
 
 	def _print_value(self, xml_root, xml_element_name, display_name, unit=None):
-		#print(xml_element_name, display_name, unit)
 		if not unit:
 			unit = ""
 		print(display_name + ": " + self._extract_value(xml_root, xml_element_name) + " " + unit)
@@ -83,31 +80,3 @@ class IPU():
 		self._print_value(e, "outletStat5", "Steckdose 6")
 		self._print_value(e, "outletStat6", "Steckdose 7")
 		self._print_value(e, "outletStat7", "Steckdose 8")
-
-
-
-print("Connecting to %s." % HOST)
-
-ipu = IPU(HOST)
-
-ipu.status()
-
-
-
-#
-# <cur0>0.3</cur0>
-# <stat0>normal</stat0>
-# <curBan>0.3</curBan>
-# <tempBan>37</tempBan>
-# <humBan>21</humBan>
-# <statBan>normal</statBan>
-# <outletStat0>on</outletStat0>
-# <outletStat1>on</outletStat1>
-# <outletStat2>on</outletStat2>
-# <outletStat3>on</outletStat3>
-# <outletStat4>on</outletStat4>
-# <outletStat5>on</outletStat5>
-# <outletStat6>on</outletStat6>
-# <outletStat7>on</outletStat7>
-#
-# <userVerifyRes>0</userVerifyRes>
