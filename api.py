@@ -1,12 +1,13 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*- 
 import requests
 import xml.etree.ElementTree as et
+from urllib.parse import urljoin, urlunsplit
 
 
 class IPU():
 
-	DEFAULT_SCHEMA = "http://"
+	DEFAULT_SCHEMA = "http"
 	DEFAULT_ENDCODING = "gb2312"
 	DEFAULT_CREDS = ("admin", "admin")
 
@@ -34,10 +35,8 @@ class IPU():
 		print(self.endpoints)
 
 	def _get_request(self, page):
-		return requests.get(
-			self.schema + self.host + page,
-			auth=self._auth(self.credentials)
-		)
+		url = urlunsplit([self.schema, self.host, page, None, None])
+		return requests.get(url, auth=self._auth(self.credentials))
 
 	def _post_request(self, page):
 		pass
