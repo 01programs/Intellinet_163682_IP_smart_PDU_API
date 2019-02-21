@@ -5,3 +5,6 @@ __pycache__/
 
 # local settings
 config.py
+
+# images can not be included because of copyright issues
+images/*
