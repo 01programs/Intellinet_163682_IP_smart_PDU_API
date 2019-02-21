@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title></title>
+<style type="text/css">
+<!--
+body {
+	background-color: #E8F0FD;
+}
+#Layer1 {
+	position:absolute;
+	width:594px;
+	height:234px;
+	z-index:1;
+	left: 18px;
+	top: 10px;
+}
+-->
+</style></head>
+
+<body>
+
+<script type="text/javascript"> 
+<!-- 
+function IsNum(e) 
+{ 
+	var k = window.event ? e.keyCode:e.which; 
+	if (!((k >= 48) && (k <= 57) || k==8 || k==0)) 
+	{ 
+		if(window.event) 
+		{ 
+			window.event.returnValue = false; 
+        } 
+        else 
+ 		{ 
+			e.preventDefault();//for firefox 
+		} 
+	}
+}
+
+//--> 
+</script>
+
+<div id="Layer1">
+  <form name="form1" method="post" action="">
+    <table width="594" height="248" border="0">
+      <tr>
+        <td width="172"><strong>Steckdosenname</strong></td>
+        <td width="200"><strong>An Verz&ouml;gerung
+（Sekunden）</strong></td>
+        <td width="168"><strong>Aus Verz&ouml;gerung
+（Sekunden）</strong></td>
+      </tr>
+      <tr>
+        <td><input name="otlt0" type="text" id="otlt0" value="PACS"  maxlength="11"></td>
+        <td><input name="ondly0" type="text" id="ondly0" onKeyPress="IsNum(event)" value="5" maxlength="3">        </td>
+        <td><input name="ofdly0" type="text" id="ofdly0" value="5" maxlength="3">        </td>
+      </tr>
+      <tr>
+        <td><input name="otlt1" type="text" id="otlt1" value="Steckdose2" maxlength="11">        </td>
+        <td><input name="ondly1" type="text" id="ondly1" onKeyPress="IsNum(event)" value="6" maxlength="3"></td>
+        <td><input name="ofdly1" type="text" id="ofdly1" onKeyPress="IsNum(event)" value="6" maxlength="3">        </td>
+      </tr>
+      <tr>
+        <td><input name="otlt2" type="text" id="otlt2" value="Steckdose3" maxlength="11">        </td>
+        <td><input name="ondly2" type="text" id="ondly2" onKeyPress="IsNum(event)" value="7" maxlength="3">        </td>
+        <td><input name="ofdly2" type="text" id="ofdly2" onKeyPress="IsNum(event)" value="7" maxlength="3">        </td>
+      </tr>
+      <tr>
+        <td><input name="otlt3" type="text" id="otlt3" value="Steckdose4" maxlength="11">        </td>
+        <td><input name="ondly3" type="text" id="ondly3" onKeyPress="IsNum(event)" value="8" maxlength="3">        </td>
+        <td><input name="ofdly3" type="text" id="ofdly3" onKeyPress="IsNum(event)" value="8" maxlength="3">        </td>
+      </tr>
+      <tr>
+        <td><input name="otlt4" type="text" id="otlt4" value="GINA" maxlength="11">        </td>
+        <td><input name="ondly4" type="text" id="ondly4" onKeyPress="IsNum(event)" value="9" maxlength="3">        </td>
+        <td><input name="ofdly4" type="text" id="ofdly4" onKeyPress="IsNum(event)" value="9" maxlength="3">        </td>
+      </tr>
+      <tr>
+        <td><input name="otlt5" type="text" id="otlt5" value="GINA Router" maxlength="11">        </td>
+        <td><input name="ondly5" type="text" id="ondly5" onKeyPress="IsNum(event)" value="10" maxlength="3">        </td>
+        <td><input name="ofdly5" type="text" id="ofdly5" onKeyPress="IsNum(event)" value="10" maxlength="3">        </td>
+      </tr>
+      <tr>
+        <td><input name="otlt6" type="text" id="otlt6" value="Steckdose7" maxlength="11">        </td>
+        <td><input name="ondly6" type="text" id="ondly6" onKeyPress="IsNum(event)" value="11" maxlength="3">        </td>
+        <td><input name="ofdly6" type="text" id="ofdly6" onKeyPress="IsNum(event)" value="11" maxlength="3">        </td>
+      </tr>
+      <tr>
+        <td><input name="otlt7" type="text" id="otlt7" value="UPC Modem" maxlength="11">        </td>
+        <td onKeyUp="IsNum(event)"><input name="ondly7" type="text" id="ondly7" value="12" maxlength="3"></td>
+        <td><input name="ofdly7" type="text" id="ofdly7" onKeyPress="IsNum(event)" value="12" maxlength="3">        </td>
+      </tr>
+      <tr>
+        <td height="23" colspan="3"><div align="center">
+          <input type="submit" value="Anwenden">
+      </div></td>
+      </tr>
+    </table>
+  </form>
+</div>
+</body>
+</html>

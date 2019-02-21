@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk">
+<title></title>
+<style type="text/css">
+<!--
+body {
+	background-color: #E8F0FD;
+}
+#Layer1 {
+	position:absolute;
+	width:453px;
+	height:197px;
+	z-index:1;
+	left: 15px;
+	top: 15px;
+}
+-->
+</style></head>
+
+<body>
+
+<script language="javascript">
+<!--
+function configIPBoxes() {
+	var st = document.forms.form1.dhcp.checked;
+	e = document.forms.form1;
+	e.ip.disabled = st;
+	e.mask.disabled = st;
+	e.gate.disabled = st;
+	e.dns1.disabled = st;
+	e.dns2.disabled = st;
+}
+
+window.onload=function()
+{ 
+     configIPBoxes();
+}
+ 
+//-->
+</script>
+
+<div id="Layer1">
+  <form name="form1" method="post" action="">
+    <table height="205" border="0" width="454">
+      <tbody><tr>
+        <td width="190"><strong>IP-Adresse</strong></td>
+        <td width="254">&nbsp;</td>
+      </tr>
+      <tr>
+        <td>Host-Name</td>
+        <td><input name="host" id="host" value="PDU_SR         " maxlength="14" type="text"></td>
+      </tr>
+      <tr>
+        <td>IP-Adresse</td>
+        <td><input name="ip" id="ip" value="10.0.255.80" type="text"></td>
+      </tr>
+      <tr>
+        <td>Subnetzmaske</td>
+        <td><input name="mask" id="mask" value="255.255.255.0" type="text"></td>
+      </tr>
+      <tr>
+        <td>Gateway</td>
+        <td><input name="gate" id="gate" value="10.0.255.1" type="text"></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><input name="dhcp" id="dhcp" onclick="configIPBoxes()" value="1" !DEF="" type="checkbox">
+        DHCP aktivieren</td>
+      </tr>
+      <tr>
+        <td><strong>DNS</strong></td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>Prim&#228;re DNS-IP</td>
+        <td><input name="dns1" id="dns1" value="10.0.255.1" type="text"></td>
+      </tr>
+      <tr>
+        <td>Sekund&#228;re DNS-IP</td>
+        <td><input name="dns2" id="dns2" value="1.1.1.1" type="text"></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><input value="Anwenden" type="submit"></td>
+      </tr>
+    </tbody></table>
+    </form>
+</div>
+<p>&nbsp;</p>
+
+
+</body></html>

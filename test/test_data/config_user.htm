@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk">
+<title></title>
+<style type="text/css">
+<!--
+body {
+	background-color: #E8F0FD;
+}
+#Layer1 {
+	position:absolute;
+	width:557px;
+	height:82px;
+	z-index:1;
+	left: 12px;
+	top: 13px;
+}
+
+.width
+{
+	width:160px;
+}
+
+-->
+</style>
+<script src="/pdu.js" type="text/javascript"></script>
+</head>
+
+<body onload="document.form1.oldnm.focus();">
+<script type="text/javascript">
+<!--
+
+function CheckOldName()
+{
+	if (document.form1.oldnm.value == '')
+	{
+		return false;
+	}
+	
+	return true;
+}
+
+function CheckNewName()
+{
+	if (document.form1.newnm.value == '')
+	{
+		return false;
+	}
+	
+	return true;
+}
+
+function CheckConfirmName()
+{
+	if (document.form1.confirm.value != document.form1.newpas.value)
+	{
+		return false;
+	}
+	
+	return true;
+}
+
+function CheckName()
+{
+	if (!CheckOldName())
+	{
+		alert("Please input user name!");
+		document.form1.oldnm.focus();
+		
+		return false;
+	}
+	
+	if (!CheckNewName())
+	{
+		alert("Please input user name!");
+		document.form1.newnm.focus();
+		
+		return false;
+	}
+	
+	if (!CheckConfirmName())
+	{
+		alert("Passwords dismatch!");
+		document.form1.newpas.focus();
+		
+		return false;
+	}
+	
+	return true;
+}
+
+
+function ProcessResponse(xmlData)
+{
+	var res = getXMLValue(xmlData, 'userVerifyRes');
+	
+	if (res == "0")
+	{
+		document.getElementById('userVerifyRes').innerHTML = "";
+	}
+	else if (res == "1")
+	{
+    	document.getElementById('userVerifyRes').innerHTML = "User name and password changed!";
+	}
+	else if (res == "2")
+	{
+		document.getElementById('userVerifyRes').innerHTML = "User name or password error, please input again!";
+	}
+}
+
+function SubmitUserName()
+{
+	if (CheckName())
+	{
+		document.form1.submit();
+	}
+}
+setTimeout("newAJAXCommand('status.xml', ProcessResponse, true)",200);
+//--> 
+</script>
+
+<p>&nbsp;</p>
+<div id="Layer1">
+  <form name="form1" method="post" action="">
+    <div id="usertable">
+      <table height="177" border="0" width="395">
+        <tbody><tr>
+          <td width="114"><strong>Aktuell</strong></td>
+          <td colspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+          <td>Benutzername</td>
+          <td colspan="2">
+            <div align="left">
+              <input name="oldnm" class="width" id="oldnm" onfocus="this.select()" type="text" maxlength="15">
+              <span id="userVerifyRes">  </span></div></td>
+        </tr>
+        <tr>
+          <td>Passwort</td>
+          <td colspan="2">
+            <div align="left">
+              <input name="oldpas" id="oldpas" class="width" onfocus="this.select()" type="password" maxlength="11">
+            </div></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td colspan="2"><div align="center"></div></td>
+        </tr>
+        <tr>
+          <td><strong>Neu</strong></td>
+          <td colspan="2"><div align="center"></div></td>
+        </tr>
+        <tr>
+          <td>Benutzername</td>
+          <td colspan="2">
+            <div align="left">
+              <input name="newnm" class="width" id="newnm" onfocus="this.select()" type="text" maxlength="15">
+            </div></td>
+        </tr>
+        <tr>
+          <td>Passwort</td>
+          <td colspan="2">
+            <div align="left">
+              <input name="newpas" id="newpas" class="width" onfocus="this.select()" type="password" maxlength="11">
+            </div></td>
+        </tr>
+        <tr>
+          <td>Best&#228;tigung</td>
+          <td colspan="2">
+		    <div align="left">
+		    
+	        <div align="left">
+	          <input name="confirm" id="confirm" class="width" maxlength="11" onfocus="this.select()>
+          </div></td>
+        </tr>
+        <tr>
+          <td colspan=" 2"="" type="password">
+            </div></div></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td width="213">
+            
+            <div align="center">
+              <input name="button" onclick="SubmitUserName()" value="Anwenden" type="button">
+            </div></td>
+          <td width="3">&nbsp;</td>
+        </tr>
+      </tbody></table>
+    </div>
+  </form>
+</div>
+
+
+</body></html>

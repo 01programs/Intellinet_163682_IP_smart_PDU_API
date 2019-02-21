@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk">
+<title></title>
+<style type="text/css">
+<!--
+body {
+	background-color: #E8F0FD;
+}
+#Layer1 {
+	position:absolute;
+	width:772px;
+	height:187px;
+	z-index:1;
+	left: 14px;
+	top: 8px;
+}
+-->
+</style></head>
+
+<body onload="document.form1.wrncur.focus()">
+<script type="text/javascript">
+<!--
+function CheckWarningCur()
+{
+	if (document.form1.wrncur.value == '')
+	{
+		return false;
+	}
+	
+	if (document.form1.wrncur.value < 0 || document.form1.wrncur.value > 100)
+	{
+		return false;
+	}
+	
+	return true;
+}
+
+function CheckOverloadCur()
+{
+	if (document.form1.ovrcur.value == '')
+	{
+		return false;
+	}
+	
+	if (document.form1.ovrcur.value < 0 || document.form1.ovrcur.value > 100)
+	{
+		return false;
+	}	
+	
+	return true;
+}
+
+function CheckWarningVoltage()
+{
+	if (document.form1.wrnvol.value == '')
+	{
+		return false;
+	}
+	
+	if (document.form1.wrnvol.value < 0)
+	{
+		return false;
+	}
+	
+	return true;
+}
+
+function CheckOverloadVoltage()
+{
+	if (document.form1.ovrvol.value == '')
+	{
+		return false;
+	}
+
+	if (document.form1.ovrvol.value < 0)
+	{
+		return false;
+	}
+		
+	return true;
+}
+
+function CheckLowTemp()
+{
+	if (document.form1.wrntmp1.value == '')
+	{
+		return false;
+	}
+	
+	if (document.form1.wrntmp1.value < 0 || document.form1.wrntmp1.value > 50)
+	{
+		return false;
+	}
+	
+	return true;
+}
+
+function CheckHighTemp()
+{
+	if (document.form1.wrntmp2.value == '')
+	{
+		return false;
+	}
+	
+	if (document.form1.wrntmp2.value < 0 || document.form1.wrntmp2.value > 50)
+	{
+		return false;
+	}
+	
+	return true;
+}
+
+function CheckHumidity()
+{
+	if (document.form1.wrnhum.value == '')
+	{
+		return false;
+	}
+	
+	if (document.form1.wrnhum.value < 20 || document.form1.wrnhum.value > 90)
+	{
+		return false;
+	}
+	
+	return true;
+}
+
+function SubmitThreashold()
+{
+	if (!CheckWarningCur())
+	{
+		alert("No current value or value outof range!");
+		document.form1.wrncur.focus();
+		
+		return;
+	}
+	
+	if (!CheckOverloadCur())
+	{
+		alert("No current value or value outof range!");
+		document.form1.ovrcur.focus();
+		
+		return;
+	}
+	
+	if (!CheckWarningVoltage())
+	{
+		alert("No voltage value or value outof range!");	
+		
+		document.form1.wrnvol.focus();
+		
+		return;
+	}
+	
+	if (!CheckOverloadVoltage())
+	{
+		alert("No voltage value or value outof range!");	
+		
+		document.form1.ovrvol.focus();
+		
+		return;
+	}
+	
+	if (!CheckLowTemp())
+	{
+		alert("Temperature range is 0~50℃!");
+		
+		document.form1.wrntmp1.focus();
+		
+		return;
+	}
+	
+	if (!CheckHighTemp())
+	{
+		alert("Temperature range is 0~50℃!");
+		
+		document.form1.wrntmp2.focus();
+		
+		return;	
+	}
+	
+	if (!CheckHumidity())
+	{
+		alert("Humidity range is 20~90%!");
+		
+		document.form1.wrnhum.focus();
+		
+		return;
+	}
+	
+	document.form1.submit();
+}
+
+//--> 
+</script>
+
+<div id="Layer1">
+  <form name="form1" method="post" action="">
+    <table height="163" border="0" width="755">
+      <tbody><tr>
+        <td width="147"><strong>Name</strong></td>
+        <td colspan="2"><strong>Schwellenwert</strong></td>
+      </tr>
+      <tr>
+        <td height="27">Strom</td>
+        <td width="292">Alarmwert<input name="wrncur" id="wrncur" value="5.0" type="text">
+        A</td>
+        <td width="302">&#220;berladungswert<input name="ovrcur" id="ovrcur" value="6.0" type="text">
+        A</td>
+      </tr>
+      <tr>
+        <td height="20">Spannung</td>
+        <td>Alarmwert<input name="wrnvol" id="wrnvol" value="250" type="text"> 
+          V</td>
+        <td>&#220;berladungswert<input name="ovrvol" id="ovrvol" value="300" type="text">
+        V</td>
+      </tr>
+      <tr>
+        <td height="21">&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td height="23">Temperatur</td>
+        <td align="right">unter<input name="wrntp1" id="wrntmp1" value="5" type="text"> 
+        ℃</td>
+        <td align="right">über<input name="wrntp2" id="wrntmp2" value="50" type="text">        
+        ℃</td>
+      </tr>
+      <tr>
+        <td height="18">Luftfeuchtigkeit</td>
+        <td colspan="2">Alarmwert<input name="wrnhum" id="warnhumi" value="80" type="text"> 
+          %</td>
+      </tr>
+      <tr>
+        <td height="23">&nbsp;</td>
+        <td colspan="2"><div align="center">
+          <input name="button" onclick="SubmitThreashold()" value="Anwenden" type="button">
+        </div></td>
+      </tr>
+    </tbody></table>
+  </form>
+</div>
+<p>&nbsp;</p>
+
+
+</body></html>
