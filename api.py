@@ -5,7 +5,7 @@
 import requests
 from lxml import etree as et
 from bs4 import BeautifulSoup
-from urllib.parse import urljoin, urlunsplit, quote_plus
+from urllib.parse import urljoin, urlunsplit
 
 
 
@@ -59,7 +59,7 @@ class IPU():
         "pdu": "info_PDU.htm",
         "system": "info_system.htm",
         # Control
-        "outlets": "control_outlet.htm",
+        "outlet": "control_outlet.htm",
         # Config
         "config_pdu": "config_PDU.htm",
         "thresholds": "config_threshold.htm",
@@ -297,12 +297,12 @@ class IPU():
             :obj:`lxml.etree._Element`: the api response
         """
 
-        endpoint = self.endpoints['control_outlet']
+        endpoint = self.endpoints['outlet']
         translation_table = {'on': 0, 'off': 1, 'power_cycle_off_on': 2}
-        outlet_states = {k:1 for k in list_of_outlet_ids}
+        outlet_states = {'outlet{}'.format(k):1 for k in list_of_outlet_ids}
         outlet_states['op'] = translation_table[state]
         outlet_states['submit'] = 'Anwenden'
-        return self._api_request(endpoint, args=outlet_states)
+        return self._api_request(endpoint, params=outlet_states)
 
     def enable_outlets(self, list_of_outlet_ids):
         """Wrapper around self._set_outlet_states() to enable all given outlets
@@ -313,7 +313,7 @@ class IPU():
         Returns:
             :obj:`lxml.etree._Element`: See: self._set_outlet_states()
         """
-        return self._set_outlet_states(list_of_outlet_ids, 0)
+        return self._set_outlet_states(list_of_outlet_ids, 'on')
 
     def disable_outlets(self, list_of_outlet_ids):
         """Wrapper around self._set_outlet_states() to disable all given outlets
@@ -324,7 +324,7 @@ class IPU():
         Returns:
             :obj:`lxml.etree._Element`: See: self._set_outlet_states()
         """
-        return self._set_outlet_states(list_of_outlet_ids, 1)
+        return self._set_outlet_states(list_of_outlet_ids, 'off')
 
     def power_cycle_outlets(self, list_of_outlet_ids):
         """Wrapper around self._set_outlet_states() to perform a power cycle on all given outlets
@@ -335,7 +335,7 @@ class IPU():
         Returns:
             :obj:`lxml.etree._Element`: See: self._set_outlet_states()
         """
-        return self._set_outlet_states(list_of_outlet_ids, 2)
+        return self._set_outlet_states(list_of_outlet_ids, 'power_cycle_off_on')
 
     def outlet_names(self):
         """Simply get a list of outlet names

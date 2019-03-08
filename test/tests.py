@@ -57,17 +57,6 @@ class TestAgainstLiveInstance(unittest.TestCase):
         reset_config = self.api.pdu_config(original_config)
         self.assertEqual(reset_config, original_config)
 
-            #         {
-            #     'outlet4': {'turn_on_delay': 9, 'turn_off_delay': 9, 'name': 'GINA'}, 
-            #     'outlet1': {'turn_on_delay': 6, 'turn_off_delay': 6, 'name': 'Steckdose2'},
-            #     'outlet6': {'turn_on_delay': 11, 'turn_off_delay': 11, 'name': 'Steckdose7'},
-            #     'outlet0': {'turn_on_delay': 5, 'turn_off_delay': 5, 'name': 'PACS'},
-            #     'outlet5': {'turn_on_delay': 10, 'turn_off_delay': 10, 'name': 'GINA Router'},
-            #     'outlet2': {'turn_on_delay': 7, 'turn_off_delay': 7, 'name': 'Steckdose3'},
-            #     'outlet7': {'turn_on_delay': 12, 'turn_off_delay': 12, 'name': 'UPC Modem'},
-            #     'outlet3': {'turn_on_delay': 8, 'turn_off_delay': 8, 'name': 'Steckdose4'}
-            # }   
-
     def test_get_outlet_states(self):
         self.assertEqual(self.api._get_outlet_states([0, 1, 2, 3, 5, ]), ['on', 'off', 'off', 'off', 'on'])
 
